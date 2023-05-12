@@ -31,7 +31,19 @@ function formatURL($url) {
         // Remove www. if present
         $host = preg_replace('/^www\./', '', $host);
 
-        return $host;
+        // Extract the domain parts
+        $domainParts = explode('.', $host);
+
+        // Check if the domain has more than two parts (e.g., subdomain.domain.tld)
+        if (count($domainParts) > 2) {
+            // Remove the first part (subdomain) and keep the rest
+            $pureDomain = implode('.', array_slice($domainParts, 1));
+        } else {
+            // The domain has only two parts (e.g., domain.tld)
+            $pureDomain = $host;
+        }
+
+        return $pureDomain;
     } else {
         // For IP addresses or other types of links, return the input as is
         return $url;
