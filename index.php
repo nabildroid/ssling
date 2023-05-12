@@ -2,6 +2,7 @@
 include "./utils/utils.php";
 include "./utils/ssl.php";
 include "./utils/portScanner.php";
+include "./utils/notion.php";
 
 $url = formatURL($_POST["url"] ?? "");
 
@@ -11,6 +12,22 @@ if (isset($_POST['ssl'])) {
     $ports = fastPortScanner($url);
 }
 
+
+
+if (isset($_POST['schedule'])) {
+
+    // Example usage
+    $databaseId = "ecef73c7f191419c91a7277efde6b88f";
+    $apiKey = "";
+    $domain = $_POST["link"];
+    $expiration = $_POST["expiration"];
+    $email = $_POST["email"];
+
+    $result = insertDataToNotion($databaseId, $apiKey, $domain, $expiration, $email);
+
+    $email_success = "تم إضافة الشهادة بنجاح";
+    header("Location: ./");
+}
 
 
 
@@ -94,11 +111,13 @@ if (isset($_POST['ssl'])) {
 
                 </div>
 
-                <form class="mt-4 border-t-2 border-dashed border-gray-400 pt-4">
+                <form method="POST" class="mt-4 border-t-2 border-dashed border-gray-400 pt-4">
                     <h1 class="text-xl leading-loose">Reminder</h1>
                     <p class="text">get reminded for when the SSL</p>
                     <div class="space-y-2 flex  flex-col sm:flex-row sm:space-y-0 sm:space-x-2">
-                        <input type="email" id="emailReminder" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <input type="hidden" name="link" value="<?= $url ?>" class="hidden">
+                        <input type="hidden" name="expiration" value="<?= $ssl["reminder"] ?>" class="hidden">
+                        <input type="email" id="emailReminder" name="email" placeholder="Email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                         <input value="<?= $ssl["reminder"] ?>" type="date" id="emailReminder" placeholder="Date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                     </div>
                     <button type="submit" name="schedule" class="mt-4 text-neutral-900 border-2 border-black rounded-md font-bold py-2 px-4 ">

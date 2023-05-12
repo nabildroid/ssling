@@ -22,11 +22,18 @@ function makeGoogleCalenderLink($title, $date)
 
 
 function formatURL($url) {
-    $parsedUrl = parse_url($url);
-    $host = $parsedUrl['host'];
+    // Check if the URL starts with "http://" or "https://"
+    if (strpos($url, "http://") === 0 || strpos($url, "https://") === 0) {
+        // Parse the URL
+        $parsedUrl = parse_url($url);
+        $host = $parsedUrl['host'];
 
-    // Remove www. if present
-    $host = preg_replace('/^www\./', '', $host);
+        // Remove www. if present
+        $host = preg_replace('/^www\./', '', $host);
 
-    return $host;
+        return $host;
+    } else {
+        // For IP addresses or other types of links, return the input as is
+        return $url;
+    }
 }
