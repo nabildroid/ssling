@@ -19,3 +19,14 @@ function makeGoogleCalenderLink($title, $date)
 
     return $googleCalendarURL;
 }
+
+
+function formatURL($url) {
+    $parsedUrl = parse_url($url);
+    $host = $parsedUrl['host'];
+
+    // Remove www. if present
+    $host = preg_replace('/^www\./', '', $host);
+
+    return $host;
+}

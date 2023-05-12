@@ -3,7 +3,7 @@ include "./utils/utils.php";
 include "./utils/ssl.php";
 include "./utils/portScanner.php";
 
-$url = $_POST["url"];
+$url = formatURL($_POST["url"] ?? "");
 
 if (isset($_POST['ssl'])) {
     $ssl = getSSLCertificate($url);
