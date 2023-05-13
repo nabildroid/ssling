@@ -20,7 +20,7 @@ body {
 
 .title {
 	font-size: 4rem;
-	color: #4CAF50;
+	color: #8e3e3e;
 	text-shadow: 2px 2px #ddd;
 	margin-bottom: 20px;
 }
@@ -43,7 +43,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-	background-color: #4CAF50;
+	
 	color: white;
 	padding: 10px 20px;
 	border: none;
@@ -55,7 +55,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-	background-color: #3e8e41;
+	background-color: #8e3e3e;
 }
 
 #result {
@@ -97,7 +97,7 @@ input[type="submit"]:hover {
 }
 
 #result input[type="submit"] {
-	background-color: #4CAF50;
+	background-color: #8e3e3e;
 	color: white;
 	padding: 10px 20px;
 	border: none;
@@ -109,5 +109,5 @@ input[type="submit"]:hover {
 }
 
 #result input[type="submit"]:hover {
-	background-color: #3e8e41;
+	background-color: #8e3e3e;
 }
