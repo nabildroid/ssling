@@ -135,7 +135,7 @@ if (isset($_POST['schedule'])) {
             <div class="mt-8">
                 <h1 class="text-xl leading-loose">SSL certificate expiration date for <span class="font-mono"><?= $url ?></span></h1>
 
-                <div class="flex items-center w-full space-x-12 mt-4">
+                <div class="flex items-center w-full flex-col sm:flex-row sm:space-x-12 mt-4">
                     <img id="ssl-cert" class="w-24" src="./icon.png" alt="SSL certificate">
 
                     <div class="text-left">
